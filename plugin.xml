@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="ArcGISMapPlugin" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>ArcGISMapPlugin</name>
+    <js-module name="ArcGISMapPlugin" src="www/ArcGISMapPlugin.js">
+        <clobbers target="window.plugins.ArcGISMapPlugin" />
+    </js-module>
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+    
+    <platform name="android">    
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="ArcGISMapPlugin">
+                <param name="android-package" value="com.experieco.plugin.ArcGISMapPlugin" />
+            </feature>
+        </config-file>     
+        <source-file src="src/android/ArcGISMapPlugin.java" target-dir="src/com/experieco/plugin/ArcGISMapPlugin" />
+        <framework custom="true" src="src/android/arcgis-sdk.gradle" type="gradleReference" />
+    </platform>
+</plugin>

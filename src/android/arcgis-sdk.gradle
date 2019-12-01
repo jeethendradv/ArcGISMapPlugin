@@ -1,0 +1,21 @@
+apply plugin: 'com.android.application'
+
+repositories{    
+    jcenter()
+    
+    maven {
+        url 'https://esri.bintray.com/arcgis'
+    }
+}
+
+android {
+    // Add below lines to set compatibility with Java 8 language features for an Android app module.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.esri.arcgisruntime:arcgis-android:100.6.0'
+}

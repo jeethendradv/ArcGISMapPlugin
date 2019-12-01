@@ -1,0 +1,17 @@
+{
+  "name": "ArcGISMapPlugin",
+  "version": "0.1.0",
+  "description": "arcgis cordova plugin",
+  "cordova": {
+    "id": "ArcGISMapPlugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Jeethendra DV",
+  "license": "ISC"
+}
