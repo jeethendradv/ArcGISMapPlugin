@@ -106,9 +106,18 @@ public class ArcGISMapPlugin extends CordovaPlugin {
                     mapView.setLayoutParams(params);
                     ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, -27.514975, 153.010068, 13);
 
-                    ServiceFeatureTable serviceFeatureTable = new ServiceFeatureTable("https://maps.treescape.co.nz/server/rest/services/Ergon/ErgonMapExplorer/FeatureServer/1");
-                    FeatureLayer featureLayer = new FeatureLayer(serviceFeatureTable);
-                    map.getOperationalLayers().add(featureLayer);
+                    ServiceFeatureTable serviceFeatureTable1 = new ServiceFeatureTable("https://maps.treescape.co.nz/server/rest/services/Ergon/ErgonMapExplorer/FeatureServer/1");
+                    FeatureLayer featureLayer1 = new FeatureLayer(serviceFeatureTable1);
+
+                    ServiceFeatureTable serviceFeatureTable2 = new ServiceFeatureTable("https://maps.treescape.co.nz/server/rest/services/Ergon/ErgonMapExplorer/FeatureServer/2");
+                    FeatureLayer featureLayer2 = new FeatureLayer(serviceFeatureTable2);
+
+                    ServiceFeatureTable serviceFeatureTable3 = new ServiceFeatureTable("https://maps.treescape.co.nz/server/rest/services/Ergon/ErgonMapExplorer/FeatureServer/3");
+                    FeatureLayer featureLayer3 = new FeatureLayer(serviceFeatureTable3);
+
+                    map.getOperationalLayers().add(featureLayer1);
+                    map.getOperationalLayers().add(featureLayer2);
+                    map.getOperationalLayers().add(featureLayer3);
 
                     mapView.setMap(map);
                     main.addView(mapView);
