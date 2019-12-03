@@ -28,7 +28,6 @@ import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener;
 import com.esri.arcgisruntime.mapping.view.MapView;
-import com.experieco.plugin.MyPluginLayout;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -39,7 +38,7 @@ public class ArcGISMapPlugin extends CordovaPlugin {
     private android.graphics.Point mClickPoint;
     protected MapView mapView;
     private CallbackContext cCtx;
-    private MyPluginLayout mPluginLayout;
+    private com.experieco.plugin.MyPluginLayout mPluginLayout;
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -56,7 +55,7 @@ public class ArcGISMapPlugin extends CordovaPlugin {
             public void run() {
                 webView.getView().setBackgroundColor(Color.TRANSPARENT);
                 webView.getView().setOverScrollMode(View.OVER_SCROLL_NEVER);
-                mPluginLayout = new MyPluginLayout(webView, activity);
+                mPluginLayout = new com.experieco.plugin.MyPluginLayout(webView, activity);
             }
         });
     }
