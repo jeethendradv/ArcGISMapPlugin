@@ -36,12 +36,14 @@ function getDivRect(div) {
 // The function that passes work along to native shells
 // Message is a string, duration may be 'long' or 'short'
 ArcGISMapPlugin.prototype.show = function(divClassname, successCallback, errorCallback) {
+    alert('Inside plugin javascript show');
     var div = document.getElementsByClassName(divClassname)[0];
     if (div) {        
         var rect = getDivRect(div);
         var options = {};
         options.mapRect = rect;
         cordova.exec(successCallback, errorCallback, 'ArcGISMapPlugin', 'show', [options]);
+        alert('Inside plugin javascript show finished');
     }
 }
 
