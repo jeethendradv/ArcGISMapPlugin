@@ -16,6 +16,7 @@
             </feature>
         </config-file>     
         <source-file src="src/android/ArcGISMapPlugin.java" target-dir="src/com/experieco/plugin/ArcGISMapPlugin" />
+        <source-file src="src/android/MyPluginLayout.java" target-dir="src/com/experieco/plugin/MyPluginLayout" />
         <framework custom="true" src="src/android/arcgis-sdk.gradle" type="gradleReference" />
     </platform>
 </plugin>
