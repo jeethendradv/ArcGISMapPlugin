@@ -2,12 +2,8 @@ package com.experieco.plugin;
 
 // The native Toast API
 import android.app.Activity;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.RectF;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 // Cordova-required packages
@@ -15,7 +11,6 @@ import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,11 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.MotionEvent;
-import android.widget.Toast;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Context;
 
 import com.esri.arcgisruntime.data.ServiceFeatureTable;
@@ -106,11 +96,7 @@ public class ArcGISMapPlugin extends CordovaPlugin {
                         return;
                     }
 
-                    WindowManager mW = (WindowManager)cordova.getActivity().getSystemService(Context.WINDOW_SERVICE);
-                    int screenHeight = mW.getDefaultDisplay().getHeight();
-
                     mapView = new MapView(activity);
-
                     ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, -27.514975, 153.010068, 13);
 
                     ServiceFeatureTable serviceFeatureTable1 = new ServiceFeatureTable("https://maps.treescape.co.nz/server/rest/services/Ergon/ErgonMapExplorer/FeatureServer/1");

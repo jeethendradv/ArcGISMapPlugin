@@ -10,9 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.esri.arcgisruntime.mapping.view.MapView;
@@ -33,7 +31,7 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
     @Override
     public void onGlobalLayout() {
         ViewTreeObserver observer = browserView.getViewTreeObserver();
-        observer.removeGlobalOnLayoutListener(this);
+        //observer.removeGlobalOnLayoutListener(this);
         observer.addOnScrollChangedListener(this);
     }
 
@@ -73,7 +71,7 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
         this.addView(scrollView);
         this.addView(frontLayer);
         root.addView(this);
-        //browserView.setBackgroundColor(Color.TRANSPARENT);
+        browserView.setBackgroundColor(Color.TRANSPARENT);
 
         scrollView.setHorizontalScrollBarEnabled(false);
         scrollView.setVerticalScrollBarEnabled(false);
@@ -94,12 +92,6 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
                     int x = (int) mapSize.left;
                     int y = (int) mapSize.top;
 
-                    /*TouchableWrapper wrapper = new TouchableWrapper(context);
-                    TouchableWrapper.LayoutParams params = new TouchableWrapper.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, height);
-                    params.bottomMargin = 0;*/
-                    WindowManager mW = (WindowManager)mActivity.getSystemService(Context.WINDOW_SERVICE);
-                    int screenHeight = mW.getDefaultDisplay().getHeight();
-
                     FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, height);
                     params.height = height;
                     params.width = width;
@@ -107,7 +99,6 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
                     params.topMargin = y;
 
                     mapView.setLayoutParams(params);
-                    //mapView.addView(wrapper);
                     scrollFrameLayout.addView(mapView, 0);
                 }
             }
