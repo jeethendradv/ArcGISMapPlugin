@@ -81,7 +81,7 @@ public class MyPluginLayout extends FrameLayout {
         scrollView.scrollTo(browserView.getScrollX(), browserView.getScrollY());
     }*/
 
-    public void addMap(MapView mapView) {
+    public void addMap(final MapView mapView) {
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
