@@ -17,7 +17,7 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 
 import org.apache.cordova.CordovaWebView;
 
-public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnScrollChangedListener, ViewTreeObserver.OnGlobalLayoutListener {
+public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnScrollChangedListener {
     private View browserView;
     private Context context;
     private FrontLayerLayout frontLayer;
@@ -28,18 +28,18 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
     private CordovaWebView webView;
     public float zoomScale;
 
-    @Override
+    /*@Override
     public void onGlobalLayout() {
         ViewTreeObserver observer = browserView.getViewTreeObserver();
         //observer.removeGlobalOnLayoutListener(this);
         observer.addOnScrollChangedListener(this);
-    }
+    }*/
 
     public MyPluginLayout(CordovaWebView webView, Activity activity) {
         super(webView.getView().getContext());
         this.webView = webView;
         this.browserView = webView.getView();
-        browserView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        //browserView.getViewTreeObserver().addOnGlobalLayoutListener(this);
         mActivity = activity;
         ViewGroup root = (ViewGroup) browserView.getParent();
         this.context = browserView.getContext();
