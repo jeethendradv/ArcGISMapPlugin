@@ -41,7 +41,7 @@ public class ArcGISMapPlugin extends CordovaPlugin {
     private com.experieco.plugin.MyPluginLayout mPluginLayout;
 
     @Override
-    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+    public void initialize(CordovaInterface cordova, final CordovaWebView webView) {
         super.initialize(cordova, webView);
         if (root != null) {
             return;
