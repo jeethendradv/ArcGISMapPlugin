@@ -17,9 +17,7 @@ import org.json.JSONObject;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.MotionEvent;
-import android.content.Context;
 
 import com.esri.arcgisruntime.data.ServiceFeatureTable;
 import com.esri.arcgisruntime.geometry.GeometryEngine;

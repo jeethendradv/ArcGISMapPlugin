@@ -9,7 +9,6 @@ import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
 
@@ -17,7 +16,7 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 
 import org.apache.cordova.CordovaWebView;
 
-public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnScrollChangedListener {
+public class MyPluginLayout extends FrameLayout {
     private View browserView;
     private Context context;
     private FrontLayerLayout frontLayer;
@@ -77,10 +76,10 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
         scrollView.setVerticalScrollBarEnabled(false);
     }
 
-    @Override
+    /*@Override
     public void onScrollChanged() {
         scrollView.scrollTo(browserView.getScrollX(), browserView.getScrollY());
-    }
+    }*/
 
     public void addMap(MapView mapView) {
         mActivity.runOnUiThread(new Runnable() {
@@ -115,21 +114,6 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
         public boolean onInterceptTouchEvent(MotionEvent event) {
             PointF clickPoint = new PointF(event.getX(), event.getY());
             return mapSize.contains(clickPoint.x, clickPoint.y);
-        }
-    }
-
-    private class TouchableWrapper extends FrameLayout {
-        public TouchableWrapper(Context context) {
-            super(context);
-        }
-
-        @Override
-        public boolean dispatchTouchEvent(MotionEvent event) {
-            int action = event.getAction();
-            if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_UP) {
-                //scrollView.requestDisallowInterceptTouchEvent(true);
-            }
-            return super.dispatchTouchEvent(event);
         }
     }
 }
