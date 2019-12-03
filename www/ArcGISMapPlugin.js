@@ -35,8 +35,8 @@ function getDivRect(div) {
 
 // The function that passes work along to native shells
 // Message is a string, duration may be 'long' or 'short'
-ArcGISMapPlugin.prototype.show = function(divId, successCallback, errorCallback) {
-    var div = document.getElementById(divId);
+ArcGISMapPlugin.prototype.show = function(divClassname, successCallback, errorCallback) {
+    var div = document.getElementsByClassName(divClassname)[0];
     if (div) {        
         var rect = getDivRect(div);
         var options = {};
