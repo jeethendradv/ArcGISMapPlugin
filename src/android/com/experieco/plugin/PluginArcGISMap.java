@@ -13,14 +13,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-/*import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;*/
-
+import com.esri.arcgisruntime.data.ServiceFeatureTable;
 import com.esri.arcgisruntime.geometry.GeometryEngine;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
+import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener;
 import com.esri.arcgisruntime.mapping.view.MapView;
@@ -98,7 +95,11 @@ public class PluginArcGISMap extends MyPluginArcGISMap implements IPluginView {
                 mapView = new MapView(activity);
                 mapView.setTag(getViewDepth());
 
-                ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, -27.514975, 153.010068, 13);
+                ArcGISMap map = new ArcGISMap(Basemap.Type.IMAGERY_WITH_LABELS_VECTOR, -27.514975, 153.010068, 13);
+
+                ServiceFeatureTable serviceFeatureTable = new ServiceFeatureTable("https://maps.treescape.co.nz/server/rest/services/Ergon/LandParcelSnip/FeatureServer/0");
+                FeatureLayer featureLayer = new FeatureLayer(serviceFeatureTable);
+                map.getOperationalLayers().add(featureLayer);
 
                 mapView.setMap(map);
                 mapView.setVisibility(View.VISIBLE);
