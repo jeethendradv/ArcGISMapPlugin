@@ -1,22 +1,94 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="ArcGISMapPlugin" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>ArcGISMapPlugin</name>
-    <js-module name="ArcGISMapPlugin" src="www/ArcGISMapPlugin.js">
-        <clobbers target="window.plugins.ArcGISMapPlugin" />
+<plugin id="cordova-plugin-arcgis" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-plugin-arcgis</name>
+    <js-module name="Promise" src="www/Promise.js" />
+    <js-module name="BaseClass" src="www/BaseClass.js">
+        <runs/>
     </js-module>
+    <js-module name="BaseArrayClass" src="www/BaseArrayClass.js">
+        <runs/>
+    </js-module>
+    <js-module name="Common" src="www/Common.js">
+        <runs/>
+    </js-module>
+    <js-module name="Map" src="www/Map.js">
+        <runs/>
+    </js-module>
+    <js-module name="event" src="www/event.js">
+        <runs/>
+    </js-module>
+    <js-module name="Environment" src="www/Environment.js">
+        <runs/>
+    </js-module>
+    <js-module name="commandQueueExecutor" src="www/commandQueueExecutor.js">
+        <runs/>
+    </js-module>
+    <js-module name="pluginInit" src="www/pluginInit.js">
+        <runs/>
+    </js-module>
+    <js-module name="Overlay" src="www/Overlay.js">
+        <runs/>
+    </js-module>
+    
+    <description>
+        ArcGIS cordova plugin for Android and iOS.
+    </description>
     
     <engines>
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
     
     <platform name="android">    
-        <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="ArcGISMapPlugin">
-                <param name="android-package" value="com.experieco.plugin.ArcGISMapPlugin" />
-            </feature>
-        </config-file>     
-        <source-file src="src/android/ArcGISMapPlugin.java" target-dir="src/com/experieco/plugin/ArcGISMapPlugin" />
-        <source-file src="src/android/MyPluginLayout.java" target-dir="src/com/experieco/plugin/MyPluginLayout" />
+        <js-module name="googlemaps-cdv-plugin" src="www/plugin-loader-for-android_ios.js">
+        <clobbers target="plugin.google.maps"/>
+        </js-module>
+        <js-module name="js_CordovaArcGISMap" src="www/js_CordovaArcGISMap-for-android_ios.js">
+          <runs/>
+        </js-module>
+
+        <config-file target="config.xml" parent="/*">
+          <!-- for Crosswalk -->
+          <preference name="xwalkZOrderOnTop" value="true"/>
+          <preference name="BackgroundColor" value="0"/>
+
+          <!-- for this plugin -->
+          <preference name="android-minSdkVersion" value="19"/>
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="CordovaArcGISMap">
+            <param name="android-package" value="com.experieco.plugin.CordovaArcGISMap"/>
+            <param name="onload" value="true"/>
+            <param name="onreset" value="true"/>
+          </feature>
+          <feature name="PluginEnvironment">
+            <param name="android-package" value="com.experieco.plugin.PluginEnvironment"/>
+          </feature>
+        </config-file>
+
+        <source-file src="src/android/com/experieco/plugin/PluginEnvironment.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/CordovaArcGISMap.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/ObjectCache.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/MyPluginArcGISMap.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/MyPluginLayout.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/MyPluginInterface.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/PluginArcGISMap.java" target-dir="src/com/experieco/plugin"/>>
+        <source-file src="src/android/com/experieco/plugin/PluginUtil.java" target-dir="src/com/experieco/plugin"/>
+        <source-file src="src/android/com/experieco/plugin/IPluginView.java" target-dir="src/com/experieco/plugin"/>        
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+          <uses-permission android:name="android.permission.INTERNET"/>
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+          <!-- GPS -->
+          <uses-feature android:name="android.hardware.location"/>
+          <uses-feature android:name="android.hardware.location.gps"/>
+        </config-file>
+
+        <resource-file src="src/android/res/layout/dummy_infowindow.xml" target="res/layout/dummy_infowindow.xml"/>
+
+        <!-- Minimum required version of Android Support library v4 for this plugin. https://developers.google.com/android/guides/releases -->
+        <preference name="ANDROID_SUPPORT_V4_VERSION" default="27.+"/>
+        <framework src="com.android.support:support-core-utils:$ANDROID_SUPPORT_V4_VERSION"/>
         <framework custom="true" src="src/android/arcgis-sdk.gradle" type="gradleReference" />
     </platform>
 </plugin>

@@ -1,9 +1,9 @@
 {
-  "name": "ArcGISMapPlugin",
+  "name": "cordova-plugin-arcgis",
   "version": "0.1.0",
   "description": "arcgis cordova plugin",
   "cordova": {
-    "id": "ArcGISMapPlugin",
+    "id": "cordova-plugin-arcgis",
     "platforms": [
       "android"
     ]
