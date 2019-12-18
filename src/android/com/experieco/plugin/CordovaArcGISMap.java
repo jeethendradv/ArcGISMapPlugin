@@ -254,7 +254,7 @@ public class CordovaArcGISMap extends CordovaPlugin implements ViewTreeObserver.
   public void getMap(final JSONArray args, final CallbackContext callbackContext) throws JSONException {
     JSONObject meta = args.getJSONObject(0);
     String mapId = meta.getString("__pgmId");
-    PluginArcGISMap pluginMap = new PluginArcGISMap();
+    PluginArcGISMap pluginMap = new PluginArcGISMap(cordova.getContext());
     pluginMap.privateInitialize(mapId, cordova, webView, null);
     pluginMap.initialize(cordova, webView);
     pluginMap.mapCtrl = CordovaArcGISMap.this;

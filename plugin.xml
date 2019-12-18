@@ -77,8 +77,12 @@
         <source-file src="src/android/com/experieco/plugin/IPluginView.java" target-dir="src/com/experieco/plugin"/>        
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
-          <uses-permission android:name="android.permission.INTERNET"/>
-          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+            <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
           <!-- GPS -->
           <uses-feature android:name="android.hardware.location"/>
           <uses-feature android:name="android.hardware.location.gps"/>
